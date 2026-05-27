@@ -8,14 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.version.outputs.version }}
-      artifact_name: ${{ steps.version.outputs.artifact_name }}
     steps:
       - name: Generate version
         id: version
         run: |
           VERSION="1.0.${{ github.run_number }}"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "artifact_name=myapp-$VERSION" >> "$GITHUB_OUTPUT"
+          echo "artifact_name=myapp-$VERSION" >> "$GITHUB_ENV"
 
   test:
     needs: build
@@ -31,8 +30,7 @@ jobs:
     steps:
       - name: Deploy
         run: |
-          echo "Deploying ${{ needs.build.outputs.artifact_name }}"
-            
+          echo "Deploying $artifact_name"
             
     
           
