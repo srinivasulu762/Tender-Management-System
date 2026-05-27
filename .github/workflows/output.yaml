@@ -17,9 +17,6 @@ jobs:
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "artifact_name=myapp-$VERSION" >> "$GITHUB_OUTPUT"
 
-      - name: Build
-        run: ./build.sh
-
   test:
     needs: build
     runs-on: ubuntu-latest
