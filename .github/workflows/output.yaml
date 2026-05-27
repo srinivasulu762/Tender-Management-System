@@ -18,12 +18,12 @@ jobs:
           echo "artifact=my-app-$VERSION" >> "$GITHUB_OUTPUT"
 
   tests:
-      runs-on: ubuntu-24.04
       needs: build
+      runs-on: ubuntu-24.04
       steps:
         - name: testing the build
           run: |
-            echo "Testing Versions: ${{needs.build.outputs.version}}"
+            echo "Testing Versions:${{needs.build.outputs.version}}"
   deploy:
       needs: [build, tests]
       runs-on: ubuntu-22.04   
