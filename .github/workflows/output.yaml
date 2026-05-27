@@ -1,0 +1,41 @@
+name: bulid and output file
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+     runs-on: ubuntu-24.04
+     outputs:
+       version: ${{ steps.generate-to.outputs.version }}
+       artifact_name: ${{ steps.generate-to.outputs.artifact }}
+     steps:
+      - name : producing the message
+        id: generate-to
+        run:
+          VERSION="version=1.0${{ github.run_id }}"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "artifact=my-app-$VERSION" >> "$GITHUB_OUTPUT"
+
+  tests:
+      runs-on: ubuntu-24.04
+      needs: build
+      steps:
+        - name: testing the build
+          run: |
+            echo "Testing Versions: ${{needs.build.outputs.version}}"
+  deploy:
+      needs: [build, tests]
+      runs-on: ubuntu-22.04   
+      steps:
+        - name: Deploy
+          run: |
+           echo "Deploying ${{needs.build.outputs.artifact_name}}"
+            
+            
+    
+          
+          
+          
+        
+       
