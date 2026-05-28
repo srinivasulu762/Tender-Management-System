@@ -17,7 +17,7 @@ jobs:
           echo "VERSION=$VERSION" >> "$GITHUB_ENV"
       - name: print the env variable
         run: 
-          echo "print the version $VERSION
+          echo "print the version $VERSION"
   test:
     needs: build
     runs-on: ubuntu-latest
