@@ -14,6 +14,6 @@ jobs:
       - name: install node js
         uses: actions/setup-node@v2
         with: 
-          node-version: 6
+          node-version: ${{ matrix.node-version }}
       - name: show node version
         run: node -v 
