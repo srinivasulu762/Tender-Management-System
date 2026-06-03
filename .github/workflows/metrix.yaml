@@ -1,0 +1,16 @@
+name: metrix
+
+on:
+  workflow_dispatch:
+jobs:
+  metrixjob:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: print the nodejs version
+        run: node -v
+      - name: install node js
+        uses: actions/setup-node@v2
+        with: 
+          node-version: 6
+      - name: show node version
+        run: node -v 
