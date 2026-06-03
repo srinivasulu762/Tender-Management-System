@@ -8,6 +8,8 @@ jobs:
       matrix:
         node-version: [6,7,8]
         java-version: [17,18]
+        exclude:
+          - node-version: [6,7]
     runs-on: ubuntu-22.04
     steps:
       - name: print the nodejs version
