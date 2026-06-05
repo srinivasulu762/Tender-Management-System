@@ -1,5 +1,8 @@
 name: pullrequest
 on:
+ push:
+   branches:
+     - srinivasulu762-patch-1
  pull_request:
    branches:
      - master
